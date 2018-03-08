@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lf.admin.db.dao.VYHPSQXZMapper" >
+  <resultMap id="BaseResultMap" type="org.lf.admin.db.pojo.VYHPSQXZ" >
+    <result column="xzid" property="xzid" jdbcType="INTEGER" />
+    <result column="sq_dm" property="sqDm" jdbcType="CHAR" />
+    <result column="sq_num" property="sqNum" jdbcType="INTEGER" />
+    <result column="sp_num" property="spNum" jdbcType="INTEGER" />
+    <result column="yhp_id" property="yhpId" jdbcType="INTEGER" />
+    <result column="app_id" property="appId" jdbcType="INTEGER" />
+    <result column="lx" property="lx" jdbcType="VARCHAR" />
+    <result column="xh" property="xh" jdbcType="VARCHAR" />
+    <result column="ccbh" property="ccbh" jdbcType="VARCHAR" />
+    <result column="dept_no" property="deptNo" jdbcType="INTEGER" />
+    <result column="dept_name" property="deptName" jdbcType="VARCHAR" />
+    <result column="fzr" property="fzr" jdbcType="VARCHAR" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="cfdd" property="cfdd" jdbcType="VARCHAR" />
+    <result column="left_limit" property="leftLimit" jdbcType="INTEGER" />
+    <result column="PIC_URL" property="picUrl" jdbcType="VARCHAR" />
+    <result column="IMG_VERSION" property="imgVersion" jdbcType="BIGINT" />
+  </resultMap>  
+  <sql id="queryCriteria">
+  	  <if test="xzid != null" >
+       AND XZID = #{xzid,jdbcType=INTEGER}
+      </if>
+      <if test="sqDm != null" >
+        AND SQ_DM = #{sqDm,jdbcType=CHAR}
+      </if>
+      <if test="sqNum != null" >
+        AND SQ_Num #{sqNum,jdbcType=INTEGER}
+      </if>
+      <if test="spNum != null" >
+        AND SP_NUM = #{spNum,jdbcType=INTEGER}
+      </if>
+      <if test="yhpId != null" >
+        AND YHP_ID = #{yhpId,jdbcType=INTEGER}
+      </if>
+      <if test="appId != null" >
+      	AND APP_ID =#{appId,jdbcType=INTEGER}
+      </if>
+      <if test="lx != null" >
+        AND LX = #{lx,jdbcType=VARCHAR}
+      </if>
+      <if test="xh != null" >
+        AND XH = #{xh,jdbcType=VARCHAR}
+      </if>
+      <if test="ccbh != null" >
+        AND CCBH = #{ccbh,jdbcType=VARCHAR}
+      </if>
+      <if test="deptNo != null" >
+        AND DEPT_NO = #{deptNo,jdbcType=INTEGER}
+      </if>
+      <if test="deptName != null" >
+        AND DEPT_NAME = #{deptName,jdbcType=VARCHAR}
+      </if>
+      <if test="fzr != null" >
+        AND FZR = #{fzr,jdbcType=VARCHAR}
+      </if>
+      <if test="num != null" >
+        AND NUM = #{num,jdbcType=INTEGER}
+      </if>
+      <if test="cfdd != null" >
+        AND CFDD = #{cfdd,jdbcType=VARCHAR}
+      </if>
+      <if test="leftLimit != null" >
+        AND LEFT_LIMIT = #{leftLimit,jdbcType=INTEGER}
+      </if>
+      <if test="picUrl != null" >
+        AND PIC_URL = #{picUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="imgVersion != null" >
+        AND IMG_VERSION = #{imgVersion,jdbcType=BIGINT}
+      </if>
+  </sql>
+  <select id="countYHPSQXZList" parameterType="org.lf.admin.db.pojo.VYHPSQXZ" resultType="java.lang.Integer">
+  	select count(*) from v_yhp_sqxz
+  	<where>
+  		<include refid="queryCriteria"></include>
+  	</where>
+  </select>
+  <select id="selectList" parameterType="org.lf.admin.db.pojo.VYHPSQXZ" resultMap="BaseResultMap">
+  	select * from v_yhp_sqxz
+  	<where>
+  		<include refid="queryCriteria"></include>
+  	</where>
+  	<if test="start != null and offset != null">
+		limit #{start,jdbcType=INTEGER}, #{offset,jdbcType=INTEGER}
+	</if>
+  </select>
+</mapper>

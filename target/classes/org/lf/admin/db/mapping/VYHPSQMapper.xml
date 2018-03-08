@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lf.admin.db.dao.VYHPSQMapper">
+  <resultMap id="BaseResultMap" type="org.lf.admin.db.pojo.VYHPSQ">
+    <result column="dm" jdbcType="CHAR" property="dm" />
+    <result column="app_id" jdbcType="INTEGER" property="appId" />
+    <result column="sqr" jdbcType="VARCHAR" property="sqr" />
+    <result column="sq_type" jdbcType="INTEGER" property="sqType" />
+    <result column="sqbm_id" jdbcType="INTEGER" property="sqbmId" />
+    <result column="DEPT_NAME" jdbcType="VARCHAR" property="deptName" />
+    <result column="DEPT_NO" jdbcType="INTEGER" property="deptNo" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="sqsj" jdbcType="TIMESTAMP" property="sqsj"/>
+    <association property="sqrmc" column="{userid=sqr,appid=app_id}" javaType="java.lang.String" select="org.lf.admin.db.dao.ChuWXUserMapper.getNameByUseridAndAppid"></association>
+  </resultMap>
+  
+  <sql id="queryCriteria">
+	<if test="dm != null">
+			and dm = #{dm,jdbcType=CHAR}
+		</if>
+		<if test="appId != null">
+			and app_id = #{appId,jdbcType=INTEGER}
+		</if>
+		<if test="sqr != null">
+			and sqr = #{sqr,jdbcType=VARCHAR}
+		</if>
+		<if test="sqType != null">
+			and sq_type = #{sqType,jdbcType=INTEGER}
+		</if>		
+		<if test="sqbmId != null">
+			and sqbm_id = #{sqbmId,jdbcType=INTEGER}
+		</if>
+		<if test="deptName != null">
+			and DEPT_NAME = #{deptName,jdbcType=VARCHAR}
+		</if>
+		<if test="deptNo != null">
+			and DEPT_NO = #{deptNo,jdbcType=INTEGER}
+		</if>
+		<if test="status != null">
+			and status = #{status,jdbcType=INTEGER}
+		</if>
+		<if test="remark != null">
+			and remark = #{remark,jdbcType=VARCHAR}
+		</if>
+		<if test="sqsj != null">
+			and sqsj = #{sqsj,jdbcType=TIMESTAMP}
+		</if>
+  </sql>
+  <select id="selectList" parameterType="org.lf.admin.db.pojo.VYHPSQ" resultMap="BaseResultMap">
+  	select * from v_yhp_sq
+  	<where>
+  		<include refid="queryCriteria"></include>
+  	</where>
+  	<if test="start != null and offset != null">
+		limit #{start,jdbcType=INTEGER}, #{offset,jdbcType=INTEGER}
+	</if>
+  </select>
+  <select id="countYHPSQList" parameterType="org.lf.admin.db.pojo.VYHPSQ" resultType="Integer">
+  	select count(*) from v_yhp_sq
+    <where>
+  		<include refid="queryCriteria"></include>
+  	</where>
+  </select>
+
+ </mapper>

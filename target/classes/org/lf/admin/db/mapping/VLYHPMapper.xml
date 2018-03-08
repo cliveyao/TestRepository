@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lf.admin.db.dao.VLYHPMapper" >
+  <resultMap id="BaseResultMap" type="org.lf.admin.db.pojo.VLYHP" >
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="app_id" property="appId" jdbcType="INTEGER" />
+    <result column="yhp_id" property="yhpId" jdbcType="INTEGER" />
+    <result column="jlr" property="jlr" jdbcType="VARCHAR" />
+    <result column="jlsj" property="jlsj" jdbcType="TIMESTAMP" />
+    <result column="czr" property="czr" jdbcType="VARCHAR" />
+    <result column="czlx" property="czlx" jdbcType="INTEGER" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="lx_id" property="lxId" jdbcType="VARCHAR" />
+    <result column="lx" property="lx" jdbcType="VARCHAR" />
+    <result column="xh" property="xh" jdbcType="VARCHAR" />
+    <result column="ccbh" property="ccbh" jdbcType="VARCHAR" />
+    <result column="zcgl_id" property="zcglId" jdbcType="INTEGER" />
+    <result column="dept_no" property="deptNo" jdbcType="INTEGER" />
+    <result column="dept_name" property="deptName" jdbcType="VARCHAR" />
+    <result column="czbm_id" property="czbmId" jdbcType="INTEGER" />
+    <result column="czbm_dept_no" property="czbmDeptNo" jdbcType="INTEGER" />
+    <result column="czbm_dept_name" property="czbmDeptName" jdbcType="VARCHAR" />
+    <result column="PIC_URL" property="picUrl" jdbcType="VARCHAR" />
+    <result column="IMG_VERSION" property="imgVersion" jdbcType="INTEGER" />
+	<association property="jlrmc" column="{userid=jlr,appid=app_id}"  
+		javaType="java.lang.String" select="org.lf.admin.db.dao.ChuWXUserMapper.getNameByUseridAndAppid">  
+	</association>
+	<association property="czrmc" column="{userid=czr,appid=app_id}"  
+		javaType="java.lang.String" select="org.lf.admin.db.dao.ChuWXUserMapper.getNameByUseridAndAppid">  
+	</association>
+  </resultMap>
+  <select id="countYHPList" resultType="int" parameterType="org.lf.admin.db.pojo.VLYHP" >
+    select COUNT(*)
+    from v_lyhp
+   <where>
+   	<if test="id != null" >
+       and id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="appId != null" >
+       and app_id = #{appId,jdbcType=INTEGER}
+      </if>
+      <if test="yhpId != null" >
+        and yhp_id = #{yhpId,jdbcType=INTEGER}
+      </if>
+      <if test="jlr != null" >
+       and jlr = #{jlr,jdbcType=VARCHAR}
+      </if>
+      <if test="jlsj != null" >
+        and jlsj = #{jlsj,jdbcType=TIMESTAMP}
+      </if>
+      <if test="czr != null" >
+      and czr =  #{czr,jdbcType=VARCHAR}
+      </if>
+      <if test="czlx != null" >
+       and czlx = #{czlx,jdbcType=INTEGER}
+      </if>
+      <if test="num != null" >
+        and num = #{num,jdbcType=INTEGER}
+      </if>
+      <if test="lxId != null" >
+        and lx_id = #{lxId,jdbcType=VARCHAR}
+      </if>
+      <if test="lx != null" >
+        and lx = #{lx,jdbcType=VARCHAR}
+      </if>
+      <if test="xh != null" >
+        and xh = #{xh,jdbcType=VARCHAR}
+      </if>
+      <if test="ccbh != null" >
+        and ccbh = #{ccbh,jdbcType=VARCHAR}
+      </if>
+      <if test="zcglId != null" >
+       and zcgl_id = #{zcglId,jdbcType=INTEGER}
+      </if>
+      <if test="deptNo != null" >
+       and dept_no #{deptNo,jdbcType=INTEGER}
+      </if>
+      <if test="deptName != null" >
+        and dept_name = #{deptName,jdbcType=VARCHAR}
+      </if>
+      <if test="czbmId != null" >
+        and czbm_id#{czbmId,jdbcType=INTEGER}
+      </if>
+      <if test="czbmDeptNo != null" >
+        and czbm_dept_no = #{czbmDeptNo,jdbcType=INTEGER}
+      </if>
+      <if test="czbmDeptName != null" >
+        and czbm_dept_name = #{czbmDeptName,jdbcType=VARCHAR}
+      </if>
+   </where>
+  </select>
+  <select id="selectList" resultMap="BaseResultMap" parameterType="org.lf.admin.db.pojo.VLYHP" >
+    select * 
+    from v_lyhp
+   <where>
+    <if test="id != null" >
+       and id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="appId != null" >
+       and app_id = #{appId,jdbcType=INTEGER}
+      </if>
+      <if test="yhpId != null" >
+        and yhp_id = #{yhpId,jdbcType=INTEGER}
+      </if>
+      <if test="jlr != null" >
+       and jlr = #{jlr,jdbcType=VARCHAR}
+      </if>
+      <if test="jlsj != null" >
+        and jlsj = #{jlsj,jdbcType=TIMESTAMP}
+      </if>
+      <if test="czr != null" >
+      and czr =  #{czr,jdbcType=VARCHAR}
+      </if>
+      <if test="czlx != null" >
+       and czlx = #{czlx,jdbcType=INTEGER}
+      </if>
+      <if test="num != null" >
+        and num = #{num,jdbcType=INTEGER}
+      </if>
+      <if test="lxId != null" >
+        and lx_id = #{lxId,jdbcType=VARCHAR}
+      </if>
+      <if test="lx != null" >
+        and lx = #{lx,jdbcType=VARCHAR}
+      </if>
+      <if test="xh != null" >
+        and xh = #{xh,jdbcType=VARCHAR}
+      </if>
+      <if test="ccbh != null" >
+        and ccbh = #{ccbh,jdbcType=VARCHAR}
+      </if>
+      <if test="zcglId != null" >
+       and zcgl_id = #{zcglId,jdbcType=INTEGER}
+      </if>
+      <if test="deptNo != null" >
+       and dept_no #{deptNo,jdbcType=INTEGER}
+      </if>
+      <if test="deptName != null" >
+        and dept_name = #{deptName,jdbcType=VARCHAR}
+      </if>
+      <if test="czbmId != null" >
+        and czbm_id#{czbmId,jdbcType=INTEGER}
+      </if>
+      <if test="czbmDeptNo != null" >
+        and czbm_dept_no = #{czbmDeptNo,jdbcType=INTEGER}
+      </if>
+      <if test="czbmDeptName != null" >
+        and czbm_dept_name = #{czbmDeptName,jdbcType=VARCHAR}
+      </if>
+   </where>
+    order by JLSJ desc
+   <if test="start != null and offset != null">
+   	limit #{start,jdbcType=INTEGER},#{offset,jdbcType=INTEGER}
+   </if>
+  </select>
+  <sql id="query_selectiveFuzzy">
+   	  <if test="id != null" >
+        and id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="appId != null" >
+        and app_id = #{appId,jdbcType=INTEGER}
+      </if>
+      <if test="yhpId != null" >
+        and yhp_id = #{yhpId,jdbcType=INTEGER}
+      </if>
+      <if test="jlr != null" >
+        and jlr = #{jlr,jdbcType=VARCHAR}
+      </if>
+      <if test="jlsj != null" >
+        and jlsj = #{jlsj,jdbcType=TIMESTAMP}
+      </if>
+      <if test="czr != null" >
+        and czr = #{czr,jdbcType=VARCHAR}
+      </if>
+      <if test="czlx != null" >
+        and czlx = #{czlx,jdbcType=INTEGER}
+      </if>
+      <if test="num != null" >
+        and num = #{num,jdbcType=INTEGER}
+      </if>
+	  <if test="lxId != null" >
+        and lx_id like CONCAT(#{lxId,jdbcType=VARCHAR},"%") 
+      </if>
+      <if test="lx != null" >
+        and lx = #{lx,jdbcType=VARCHAR}
+      </if>
+      <if test="xh != null" >
+        and xh = #{xh,jdbcType=VARCHAR}
+      </if>
+      <if test="ccbh != null" >
+        and ccbh = #{ccbh,jdbcType=VARCHAR}
+      </if>
+      <if test="zcglId != null" >
+        and zcgl_id = #{zcglId,jdbcType=INTEGER}
+      </if>
+      <if test="deptNo != null and deptNo.size() > 0">
+			and dept_no in <foreach collection="deptNo" item="item" index="index" open="(" separator="," close=")">#{item}</foreach>
+	  </if>
+      <if test="deptName != null" >
+        and dept_name = #{deptName,jdbcType=VARCHAR}
+      </if>
+      <if test="czbmId != null" >
+        and czbm_id = #{czbmId,jdbcType=INTEGER}
+      </if>
+	  <if test="czbmDeptNo != null and czbmDeptNo.size() > 0">
+			and czbm_dept_no in <foreach collection="czbmDeptNo" item="item" index="index" open="(" separator="," close=")">#{item}</foreach>
+	  </if>
+      <if test="czbmDeptName != null" >
+        and czbm_dept_name = #{czbmDeptName,jdbcType=VARCHAR}
+      </if>
+  </sql>
+  
+  <select id="countLYHPListFuzzy" parameterType="java.util.Map"
+  resultType="int">
+  	select count(*) from v_lyhp
+  		<where>
+  			<include refid="query_selectiveFuzzy"></include>
+  		</where>
+  </select>
+  <select id="getLYHPListFuzzy" parameterType="java.util.Map"
+  resultMap="BaseResultMap">
+  	select * from v_lyhp
+  		<where>
+  			<include refid="query_selectiveFuzzy"></include>
+  		</where>
+  		<if test="start != null and offset != null">
+		 	limit #{start,jdbcType=INTEGER},#{offset,jdbcType=INTEGER}
+		</if>
+  </select>
+ 
+
+</mapper>
