@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lf.admin.db.dao.Sqs_companyMapper">
+  <resultMap id="BaseResultMap" type="org.lf.admin.db.pojo.Sqs_company">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="COM_NAME" jdbcType="VARCHAR" property="comName" />
+    <result column="COM_CODE" jdbcType="VARCHAR" property="comCode" />
+    <result column="STATUS" jdbcType="INTEGER" property="status" />
+    <result column="RECRUITS_NUM" jdbcType="INTEGER" property="recruitsNum" />
+    <result column="JOB" jdbcType="VARCHAR" property="job" />
+    <result column="EXP_REMARK" jdbcType="VARCHAR" property="expRemark" />
+    <result column="PAY" jdbcType="VARCHAR" property="pay" />
+    <result column="SETTLEMENT_CYCLE" jdbcType="VARCHAR" property="settlementCycle" />
+    <result column="OFF_DAY" jdbcType="INTEGER" property="offDay" />
+    <result column="TREATMENT" jdbcType="VARCHAR" property="treatment" />
+    <result column="COM_CONTACT" jdbcType="VARCHAR" property="comContact" />
+    <result column="CONTACT_NAME" jdbcType="VARCHAR" property="contactName" />
+    <result column="COM_ADDRESS" jdbcType="VARCHAR" property="comAddress" />
+    <result column="SERVICE_STATUS" jdbcType="INTEGER" property="serviceStatus" />
+    <result column="DELETE_STATUS" jdbcType="INTEGER" property="deleteStatus" />
+    <result column="VDEF1" jdbcType="VARCHAR" property="vdef1" />
+    <result column="VDEF2" jdbcType="VARCHAR" property="vdef2" />
+    <result column="VDEF3" jdbcType="VARCHAR" property="vdef3" />
+    <result column="VDEF4" jdbcType="VARCHAR" property="vdef4" />
+    <result column="VDEF5" jdbcType="VARCHAR" property="vdef5" />
+    <result column="CREATE_ON" jdbcType="TIMESTAMP" property="createOn" />
+    <result column="CREATE_BY" jdbcType="VARCHAR" property="createBy" />
+    <result column="UPDATE_ON" jdbcType="TIMESTAMP" property="updateOn" />
+    <result column="UPDATE_BY" jdbcType="VARCHAR" property="updateBy" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, COM_NAME, COM_CODE, STATUS, RECRUITS_NUM, JOB, EXP_REMARK, PAY, SETTLEMENT_CYCLE, 
+    OFF_DAY, TREATMENT, COM_CONTACT, CONTACT_NAME, COM_ADDRESS, SERVICE_STATUS, DELETE_STATUS, 
+    VDEF1, VDEF2, VDEF3, VDEF4, VDEF5, CREATE_ON, CREATE_BY, UPDATE_ON, UPDATE_BY
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sqs_company
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectList" parameterType="org.lf.admin.db.pojo.Sqs_company" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List"/> from sqs_company
+  	<if test="start!=null">
+  		limit #{start},#{offset}
+  	</if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sqs_company
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lf.admin.db.pojo.Sqs_company">
+    insert into sqs_company (ID, COM_NAME, COM_CODE, 
+      STATUS, RECRUITS_NUM, JOB, 
+      EXP_REMARK, PAY, SETTLEMENT_CYCLE, 
+      OFF_DAY, TREATMENT, COM_CONTACT, 
+      CONTACT_NAME, COM_ADDRESS, SERVICE_STATUS, 
+      DELETE_STATUS, VDEF1, VDEF2, 
+      VDEF3, VDEF4, VDEF5, 
+      CREATE_ON, CREATE_BY, UPDATE_ON, 
+      UPDATE_BY)
+    values (#{id,jdbcType=INTEGER}, #{comName,jdbcType=VARCHAR}, #{comCode,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{recruitsNum,jdbcType=INTEGER}, #{job,jdbcType=VARCHAR}, 
+      #{expRemark,jdbcType=VARCHAR}, #{pay,jdbcType=VARCHAR}, #{settlementCycle,jdbcType=VARCHAR}, 
+      #{offDay,jdbcType=INTEGER}, #{treatment,jdbcType=VARCHAR}, #{comContact,jdbcType=VARCHAR}, 
+      #{contactName,jdbcType=VARCHAR}, #{comAddress,jdbcType=VARCHAR}, #{serviceStatus,jdbcType=INTEGER}, 
+      #{deleteStatus,jdbcType=INTEGER}, #{vdef1,jdbcType=VARCHAR}, #{vdef2,jdbcType=VARCHAR}, 
+      #{vdef3,jdbcType=VARCHAR}, #{vdef4,jdbcType=VARCHAR}, #{vdef5,jdbcType=VARCHAR}, 
+      #{createOn,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, #{updateOn,jdbcType=TIMESTAMP}, 
+      #{updateBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lf.admin.db.pojo.Sqs_company">
+    insert into sqs_company
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="comName != null">
+        COM_NAME,
+      </if>
+      <if test="comCode != null">
+        COM_CODE,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="recruitsNum != null">
+        RECRUITS_NUM,
+      </if>
+      <if test="job != null">
+        JOB,
+      </if>
+      <if test="expRemark != null">
+        EXP_REMARK,
+      </if>
+      <if test="pay != null">
+        PAY,
+      </if>
+      <if test="settlementCycle != null">
+        SETTLEMENT_CYCLE,
+      </if>
+      <if test="offDay != null">
+        OFF_DAY,
+      </if>
+      <if test="treatment != null">
+        TREATMENT,
+      </if>
+      <if test="comContact != null">
+        COM_CONTACT,
+      </if>
+      <if test="contactName != null">
+        CONTACT_NAME,
+      </if>
+      <if test="comAddress != null">
+        COM_ADDRESS,
+      </if>
+      <if test="serviceStatus != null">
+        SERVICE_STATUS,
+      </if>
+      <if test="deleteStatus != null">
+        DELETE_STATUS,
+      </if>
+      <if test="vdef1 != null">
+        VDEF1,
+      </if>
+      <if test="vdef2 != null">
+        VDEF2,
+      </if>
+      <if test="vdef3 != null">
+        VDEF3,
+      </if>
+      <if test="vdef4 != null">
+        VDEF4,
+      </if>
+      <if test="vdef5 != null">
+        VDEF5,
+      </if>
+      <if test="createOn != null">
+        CREATE_ON,
+      </if>
+      <if test="createBy != null">
+        CREATE_BY,
+      </if>
+      <if test="updateOn != null">
+        UPDATE_ON,
+      </if>
+      <if test="updateBy != null">
+        UPDATE_BY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="comName != null">
+        #{comName,jdbcType=VARCHAR},
+      </if>
+      <if test="comCode != null">
+        #{comCode,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="recruitsNum != null">
+        #{recruitsNum,jdbcType=INTEGER},
+      </if>
+      <if test="job != null">
+        #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="expRemark != null">
+        #{expRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="pay != null">
+        #{pay,jdbcType=VARCHAR},
+      </if>
+      <if test="settlementCycle != null">
+        #{settlementCycle,jdbcType=VARCHAR},
+      </if>
+      <if test="offDay != null">
+        #{offDay,jdbcType=INTEGER},
+      </if>
+      <if test="treatment != null">
+        #{treatment,jdbcType=VARCHAR},
+      </if>
+      <if test="comContact != null">
+        #{comContact,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null">
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="comAddress != null">
+        #{comAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceStatus != null">
+        #{serviceStatus,jdbcType=INTEGER},
+      </if>
+      <if test="deleteStatus != null">
+        #{deleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="vdef1 != null">
+        #{vdef1,jdbcType=VARCHAR},
+      </if>
+      <if test="vdef2 != null">
+        #{vdef2,jdbcType=VARCHAR},
+      </if>
+      <if test="vdef3 != null">
+        #{vdef3,jdbcType=VARCHAR},
+      </if>
+      <if test="vdef4 != null">
+        #{vdef4,jdbcType=VARCHAR},
+      </if>
+      <if test="vdef5 != null">
+        #{vdef5,jdbcType=VARCHAR},
+      </if>
+      <if test="createOn != null">
+        #{createOn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateOn != null">
+        #{updateOn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lf.admin.db.pojo.Sqs_company">
+    update sqs_company
+    <set>
+      <if test="comName != null">
+        COM_NAME = #{comName,jdbcType=VARCHAR},
+      </if>
+      <if test="comCode != null">
+        COM_CODE = #{comCode,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="recruitsNum != null">
+        RECRUITS_NUM = #{recruitsNum,jdbcType=INTEGER},
+      </if>
+      <if test="job != null">
+        JOB = #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="expRemark != null">
+        EXP_REMARK = #{expRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="pay != null">
+        PAY = #{pay,jdbcType=VARCHAR},
+      </if>
+      <if test="settlementCycle != null">
+        SETTLEMENT_CYCLE = #{settlementCycle,jdbcType=VARCHAR},
+      </if>
+      <if test="offDay != null">
+        OFF_DAY = #{offDay,jdbcType=INTEGER},
+      </if>
+      <if test="treatment != null">
+        TREATMENT = #{treatment,jdbcType=VARCHAR},
+      </if>
+      <if test="comContact != null">
+        COM_CONTACT = #{comContact,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null">
+        CONTACT_NAME = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="comAddress != null">
+        COM_ADDRESS = #{comAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceStatus != null">
+        SERVICE_STATUS = #{serviceStatus,jdbcType=INTEGER},
+      </if>
+      <if test="deleteStatus != null">
+        DELETE_STATUS = #{deleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="vdef1 != null">
+        VDEF1 = #{vdef1,jdbcType=VARCHAR},
+      </if>
+      <if test="vdef2 != null">
+        VDEF2 = #{vdef2,jdbcType=VARCHAR},
+      </if>
+      <if test="vdef3 != null">
+        VDEF3 = #{vdef3,jdbcType=VARCHAR},
+      </if>
+      <if test="vdef4 != null">
+        VDEF4 = #{vdef4,jdbcType=VARCHAR},
+      </if>
+      <if test="vdef5 != null">
+        VDEF5 = #{vdef5,jdbcType=VARCHAR},
+      </if>
+      <if test="createOn != null">
+        CREATE_ON = #{createOn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        CREATE_BY = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateOn != null">
+        UPDATE_ON = #{updateOn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        UPDATE_BY = #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lf.admin.db.pojo.Sqs_company">
+    update sqs_company
+    set COM_NAME = #{comName,jdbcType=VARCHAR},
+      COM_CODE = #{comCode,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=INTEGER},
+      RECRUITS_NUM = #{recruitsNum,jdbcType=INTEGER},
+      JOB = #{job,jdbcType=VARCHAR},
+      EXP_REMARK = #{expRemark,jdbcType=VARCHAR},
+      PAY = #{pay,jdbcType=VARCHAR},
+      SETTLEMENT_CYCLE = #{settlementCycle,jdbcType=VARCHAR},
+      OFF_DAY = #{offDay,jdbcType=INTEGER},
+      TREATMENT = #{treatment,jdbcType=VARCHAR},
+      COM_CONTACT = #{comContact,jdbcType=VARCHAR},
+      CONTACT_NAME = #{contactName,jdbcType=VARCHAR},
+      COM_ADDRESS = #{comAddress,jdbcType=VARCHAR},
+      SERVICE_STATUS = #{serviceStatus,jdbcType=INTEGER},
+      DELETE_STATUS = #{deleteStatus,jdbcType=INTEGER},
+      VDEF1 = #{vdef1,jdbcType=VARCHAR},
+      VDEF2 = #{vdef2,jdbcType=VARCHAR},
+      VDEF3 = #{vdef3,jdbcType=VARCHAR},
+      VDEF4 = #{vdef4,jdbcType=VARCHAR},
+      VDEF5 = #{vdef5,jdbcType=VARCHAR},
+      CREATE_ON = #{createOn,jdbcType=TIMESTAMP},
+      CREATE_BY = #{createBy,jdbcType=VARCHAR},
+      UPDATE_ON = #{updateOn,jdbcType=TIMESTAMP},
+      UPDATE_BY = #{updateBy,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

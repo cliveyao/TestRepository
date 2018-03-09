@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lf.admin.db.dao.Sqs_empMapper">
+  <resultMap id="BaseResultMap" type="org.lf.admin.db.pojo.Sqs_emp">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="EMP_CODE" jdbcType="VARCHAR" property="empCode" />
+    <result column="EMP_NAME" jdbcType="VARCHAR" property="empName" />
+    <result column="EMP_AGE" jdbcType="INTEGER" property="empAge" />
+    <result column="ACCOUNT" jdbcType="VARCHAR" property="account" />
+    <result column="EMP_CONTACT" jdbcType="VARCHAR" property="empContact" />
+    <result column="EXP_PAY" jdbcType="VARCHAR" property="expPay" />
+    <result column="WEEKDAY" jdbcType="VARCHAR" property="weekday" />
+    <result column="EXP_REMARK" jdbcType="VARCHAR" property="expRemark" />
+    <result column="PRIORITY" jdbcType="INTEGER" property="priority" />
+    <result column="SPECIALTY" jdbcType="VARCHAR" property="specialty" />
+    <result column="DELETE_STATUS" jdbcType="INTEGER" property="deleteStatus" />
+    <result column="VDEF1" jdbcType="VARCHAR" property="vdef1" />
+    <result column="VDEF2" jdbcType="VARCHAR" property="vdef2" />
+    <result column="VDEF3" jdbcType="VARCHAR" property="vdef3" />
+    <result column="VDEF4" jdbcType="VARCHAR" property="vdef4" />
+    <result column="VDEF5" jdbcType="VARCHAR" property="vdef5" />
+    <result column="CREATE_ON" jdbcType="TIMESTAMP" property="createOn" />
+    <result column="CREATE_BY" jdbcType="VARCHAR" property="createBy" />
+    <result column="UPDATE_ON" jdbcType="TIMESTAMP" property="updateOn" />
+    <result column="UPDATE_BY" jdbcType="VARCHAR" property="updateBy" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, EMP_CODE, EMP_NAME, EMP_AGE, ACCOUNT, EMP_CONTACT, EXP_PAY, WEEKDAY, EXP_REMARK, 
+    PRIORITY, SPECIALTY, DELETE_STATUS, VDEF1, VDEF2, VDEF3, VDEF4, VDEF5, CREATE_ON, 
+    CREATE_BY, UPDATE_ON, UPDATE_BY
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sqs_emp
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectList" parameterType="org.lf.admin.db.pojo.Sqs_emp" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List"/> from sqs_emp
+  	<if test="start!=null">
+  		limit #{start},#{offset}
+  	</if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sqs_emp
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lf.admin.db.pojo.Sqs_emp">
+    insert into sqs_emp (ID, EMP_CODE, EMP_NAME, 
+      EMP_AGE, ACCOUNT, EMP_CONTACT, 
+      EXP_PAY, WEEKDAY, EXP_REMARK, 
+      PRIORITY, SPECIALTY, DELETE_STATUS, 
+      VDEF1, VDEF2, VDEF3, 
+      VDEF4, VDEF5, CREATE_ON, 
+      CREATE_BY, UPDATE_ON, UPDATE_BY
+      )
+    values (#{id,jdbcType=INTEGER}, #{empCode,jdbcType=VARCHAR}, #{empName,jdbcType=VARCHAR}, 
+      #{empAge,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, #{empContact,jdbcType=VARCHAR}, 
+      #{expPay,jdbcType=VARCHAR}, #{weekday,jdbcType=VARCHAR}, #{expRemark,jdbcType=VARCHAR}, 
+      #{priority,jdbcType=INTEGER}, #{specialty,jdbcType=VARCHAR}, #{deleteStatus,jdbcType=INTEGER}, 
+      #{vdef1,jdbcType=VARCHAR}, #{vdef2,jdbcType=VARCHAR}, #{vdef3,jdbcType=VARCHAR}, 
+      #{vdef4,jdbcType=VARCHAR}, #{vdef5,jdbcType=VARCHAR}, #{createOn,jdbcType=TIMESTAMP}, 
+      #{createBy,jdbcType=VARCHAR}, #{updateOn,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.lf.admin.db.pojo.Sqs_emp">
+    insert into sqs_emp
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="empCode != null">
+        EMP_CODE,
+      </if>
+      <if test="empName != null">
+        EMP_NAME,
+      </if>
+      <if test="empAge != null">
+        EMP_AGE,
+      </if>
+      <if test="account != null">
+        ACCOUNT,
+      </if>
+      <if test="empContact != null">
+        EMP_CONTACT,
+      </if>
+      <if test="expPay != null">
+        EXP_PAY,
+      </if>
+      <if test="weekday != null">
+        WEEKDAY,
+      </if>
+      <if test="expRemark != null">
+        EXP_REMARK,
+      </if>
+      <if test="priority != null">
+        PRIORITY,
+      </if>
+      <if test="specialty != null">
+        SPECIALTY,
+      </if>
+      <if test="deleteStatus != null">
+        DELETE_STATUS,
+      </if>
+      <if test="vdef1 != null">
+        VDEF1,
+      </if>
+      <if test="vdef2 != null">
+        VDEF2,
+      </if>
+      <if test="vdef3 != null">
+        VDEF3,
+      </if>
+      <if test="vdef4 != null">
+        VDEF4,
+      </if>
+      <if test="vdef5 != null">
+        VDEF5,
+      </if>
+      <if test="createOn != null">
+        CREATE_ON,
+      </if>
+      <if test="createBy != null">
+        CREATE_BY,
+      </if>
+      <if test="updateOn != null">
+        UPDATE_ON,
+      </if>
+      <if test="updateBy != null">
+        UPDATE_BY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="empCode != null">
+        #{empCode,jdbcType=VARCHAR},
+      </if>
+      <if test="empName != null">
+        #{empName,jdbcType=VARCHAR},
+      </if>
+      <if test="empAge != null">
+        #{empAge,jdbcType=INTEGER},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="empContact != null">
+        #{empContact,jdbcType=VARCHAR},
+      </if>
+      <if test="expPay != null">
+        #{expPay,jdbcType=VARCHAR},
+      </if>
+      <if test="weekday != null">
+        #{weekday,jdbcType=VARCHAR},
+      </if>
+      <if test="expRemark != null">
+        #{expRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null">
+        #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="specialty != null">
+        #{specialty,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteStatus != null">
+        #{deleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="vdef1 != null">
+        #{vdef1,jdbcType=VARCHAR},
+      </if>
+      <if test="vdef2 != null">
+        #{vdef2,jdbcType=VARCHAR},
+      </if>
+      <if test="vdef3 != null">
+        #{vdef3,jdbcType=VARCHAR},
+      </if>
+      <if test="vdef4 != null">
+        #{vdef4,jdbcType=VARCHAR},
+      </if>
+      <if test="vdef5 != null">
+        #{vdef5,jdbcType=VARCHAR},
+      </if>
+      <if test="createOn != null">
+        #{createOn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateOn != null">
+        #{updateOn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lf.admin.db.pojo.Sqs_emp">
+    update sqs_emp
+    <set>
+      <if test="empCode != null">
+        EMP_CODE = #{empCode,jdbcType=VARCHAR},
+      </if>
+      <if test="empName != null">
+        EMP_NAME = #{empName,jdbcType=VARCHAR},
+      </if>
+      <if test="empAge != null">
+        EMP_AGE = #{empAge,jdbcType=INTEGER},
+      </if>
+      <if test="account != null">
+        ACCOUNT = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="empContact != null">
+        EMP_CONTACT = #{empContact,jdbcType=VARCHAR},
+      </if>
+      <if test="expPay != null">
+        EXP_PAY = #{expPay,jdbcType=VARCHAR},
+      </if>
+      <if test="weekday != null">
+        WEEKDAY = #{weekday,jdbcType=VARCHAR},
+      </if>
+      <if test="expRemark != null">
+        EXP_REMARK = #{expRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null">
+        PRIORITY = #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="specialty != null">
+        SPECIALTY = #{specialty,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteStatus != null">
+        DELETE_STATUS = #{deleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="vdef1 != null">
+        VDEF1 = #{vdef1,jdbcType=VARCHAR},
+      </if>
+      <if test="vdef2 != null">
+        VDEF2 = #{vdef2,jdbcType=VARCHAR},
+      </if>
+      <if test="vdef3 != null">
+        VDEF3 = #{vdef3,jdbcType=VARCHAR},
+      </if>
+      <if test="vdef4 != null">
+        VDEF4 = #{vdef4,jdbcType=VARCHAR},
+      </if>
+      <if test="vdef5 != null">
+        VDEF5 = #{vdef5,jdbcType=VARCHAR},
+      </if>
+      <if test="createOn != null">
+        CREATE_ON = #{createOn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        CREATE_BY = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateOn != null">
+        UPDATE_ON = #{updateOn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        UPDATE_BY = #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lf.admin.db.pojo.Sqs_emp">
+    update sqs_emp
+    set EMP_CODE = #{empCode,jdbcType=VARCHAR},
+      EMP_NAME = #{empName,jdbcType=VARCHAR},
+      EMP_AGE = #{empAge,jdbcType=INTEGER},
+      ACCOUNT = #{account,jdbcType=VARCHAR},
+      EMP_CONTACT = #{empContact,jdbcType=VARCHAR},
+      EXP_PAY = #{expPay,jdbcType=VARCHAR},
+      WEEKDAY = #{weekday,jdbcType=VARCHAR},
+      EXP_REMARK = #{expRemark,jdbcType=VARCHAR},
+      PRIORITY = #{priority,jdbcType=INTEGER},
+      SPECIALTY = #{specialty,jdbcType=VARCHAR},
+      DELETE_STATUS = #{deleteStatus,jdbcType=INTEGER},
+      VDEF1 = #{vdef1,jdbcType=VARCHAR},
+      VDEF2 = #{vdef2,jdbcType=VARCHAR},
+      VDEF3 = #{vdef3,jdbcType=VARCHAR},
+      VDEF4 = #{vdef4,jdbcType=VARCHAR},
+      VDEF5 = #{vdef5,jdbcType=VARCHAR},
+      CREATE_ON = #{createOn,jdbcType=TIMESTAMP},
+      CREATE_BY = #{createBy,jdbcType=VARCHAR},
+      UPDATE_ON = #{updateOn,jdbcType=TIMESTAMP},
+      UPDATE_BY = #{updateBy,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
