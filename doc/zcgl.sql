@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_3306
-Source Server Version : 50096
+Source Server         : localhost
+Source Server Version : 50720
 Source Host           : localhost:3306
 Source Database       : zcgl
 
 Target Server Type    : MYSQL
-Target Server Version : 50096
+Target Server Version : 50720
 File Encoding         : 65001
 
-Date: 2018-03-08 20:49:19
+Date: 2018-03-09 19:16:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,22 +20,22 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `chu_app`;
 CREATE TABLE `chu_app` (
-  `APP_ID` int(11) NOT NULL auto_increment,
-  `APP_NAME` varchar(60) default NULL,
-  `CORP_ID` varchar(30) default NULL,
-  `CORP_NAME` varchar(60) default NULL,
-  `CORP_ICON` varchar(100) default NULL,
-  `AGENT_ID` int(3) default NULL,
-  `SECRET` varchar(100) default NULL,
-  `TOKEN` varchar(60) default NULL,
-  `ENCRYPT` int(1) default NULL COMMENT '加密（1），明文（0）',
-  `AES_KEY` varchar(100) default NULL,
-  `CALLBACK_URL` varchar(200) default NULL,
-  `SERVER_URL` varchar(100) default NULL,
-  `DEPT_ROOT` int(4) default NULL,
-  `LEVEL` int(1) default '0',
-  `STOP` int(1) default NULL COMMENT '关闭（1），启动（0）',
-  PRIMARY KEY  (`APP_ID`)
+  `APP_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `APP_NAME` varchar(60) DEFAULT NULL,
+  `CORP_ID` varchar(30) DEFAULT NULL,
+  `CORP_NAME` varchar(60) DEFAULT NULL,
+  `CORP_ICON` varchar(100) DEFAULT NULL,
+  `AGENT_ID` int(3) DEFAULT NULL,
+  `SECRET` varchar(100) DEFAULT NULL,
+  `TOKEN` varchar(60) DEFAULT NULL,
+  `ENCRYPT` int(1) DEFAULT NULL COMMENT '加密（1），明文（0）',
+  `AES_KEY` varchar(100) DEFAULT NULL,
+  `CALLBACK_URL` varchar(200) DEFAULT NULL,
+  `SERVER_URL` varchar(100) DEFAULT NULL,
+  `DEPT_ROOT` int(4) DEFAULT NULL,
+  `LEVEL` int(1) DEFAULT '0',
+  `STOP` int(1) DEFAULT NULL COMMENT '关闭（1），启动（0）',
+  PRIMARY KEY (`APP_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -48,14 +48,14 @@ INSERT INTO `chu_app` VALUES ('17', '设备巡检微助手', 'ww342013a5f3df8c7f
 -- ----------------------------
 DROP TABLE IF EXISTS `chu_backup`;
 CREATE TABLE `chu_backup` (
-  `ID` int(11) NOT NULL auto_increment,
-  `APP_ID` int(11) default NULL,
-  `BFSJ` datetime default NULL,
-  `CZR` varchar(30) default NULL,
-  `BACKUPSET` varchar(50) default NULL,
-  `STATUS` int(1) default '0' COMMENT '已删除（1）/ 未删除（0）',
-  `REMARK` varchar(100) default NULL,
-  PRIMARY KEY  (`ID`)
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `APP_ID` int(11) DEFAULT NULL,
+  `BFSJ` datetime DEFAULT NULL,
+  `CZR` varchar(30) DEFAULT NULL,
+  `BACKUPSET` varchar(50) DEFAULT NULL,
+  `STATUS` int(1) DEFAULT '0' COMMENT '已删除（1）/ 未删除（0）',
+  `REMARK` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -68,11 +68,11 @@ INSERT INTO `chu_backup` VALUES ('1', '17', '2017-07-31 13:19:28', 'XuQingWei', 
 -- ----------------------------
 DROP TABLE IF EXISTS `chu_env`;
 CREATE TABLE `chu_env` (
-  `ID` int(11) NOT NULL auto_increment,
-  `ENV_KEY` varchar(30) default NULL,
-  `ENV_VALUE` varchar(100) default NULL,
-  `REMARK` varchar(100) default NULL,
-  PRIMARY KEY  (`ID`)
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ENV_KEY` varchar(30) DEFAULT NULL,
+  `ENV_VALUE` varchar(100) DEFAULT NULL,
+  `REMARK` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='系统环境设置表';
 
 -- ----------------------------
@@ -87,15 +87,15 @@ INSERT INTO `chu_env` VALUES ('8', 'TAG_HQ_ADMIN', '1001', '后勤管理人员�
 -- ----------------------------
 DROP TABLE IF EXISTS `chu_menu`;
 CREATE TABLE `chu_menu` (
-  `ID` int(5) NOT NULL auto_increment,
+  `ID` int(5) NOT NULL AUTO_INCREMENT,
   `NAME` varchar(100) NOT NULL,
   `URL` varchar(100) NOT NULL,
-  `ICON_CLASS` varchar(40) default NULL COMMENT '菜单图标',
+  `ICON_CLASS` varchar(40) DEFAULT NULL COMMENT '菜单图标',
   `KEY_NAME` varchar(40) NOT NULL COMMENT 'home.js中menu对应的id号',
   `PID` int(5) NOT NULL,
   `MENU_LEVEL` int(5) NOT NULL,
-  `FLAG` int(2) default '0' COMMENT '为1表示菜单下面有一个分界线',
-  PRIMARY KEY  (`ID`)
+  `FLAG` int(2) DEFAULT '0' COMMENT '为1表示菜单下面有一个分界线',
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=604 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -106,6 +106,7 @@ INSERT INTO `chu_menu` VALUES ('20', '数据字典', '/console/catalog', 'icon-j
 INSERT INTO `chu_menu` VALUES ('30', '固定资产管理', '/console/zcgl', 'icon-jssm-zcgl', 'zcgl', '0', '1', '0');
 INSERT INTO `chu_menu` VALUES ('40', '任务管理', '/console/rwgl', 'icon-jssm-rwgl', 'rwgl', '0', '1', '0');
 INSERT INTO `chu_menu` VALUES ('50', '资产盘点', '/console/zcpd', 'icon-jssm-zcpd', 'zcpd', '0', '1', '0');
+INSERT INTO `chu_menu` VALUES ('60', '信息管理', '/console/xxgl', 'icon-jssm-zcgl', 'zcgl', '0', '1', '0');
 INSERT INTO `chu_menu` VALUES ('101', '用户维护', '/console/user/userListUI.do', 'icon-jssm-yhgl', 'yhwh', '10', '2', '0');
 INSERT INTO `chu_menu` VALUES ('102', '角色维护', '/console/role/roleListUI.do', 'icon-jssm-jsgl', 'jswh', '10', '2', '0');
 INSERT INTO `chu_menu` VALUES ('103', '系统环境设置', '/console/sys/envListUI.do', 'icon-jssm-xthjsz', 'xthjsz', '10', '2', '0');
@@ -140,20 +141,20 @@ INSERT INTO `chu_menu` VALUES ('502', '部门固定资产查询', '/console/zcpd
 INSERT INTO `chu_menu` VALUES ('503', '部门固定资产分类统计', '/console/zcpd/bmzcStat/BMZC_ZCFLStatUI.do', 'icon-jssm-bmzcfl', 'bmzcStat', '50', '2', '0');
 INSERT INTO `chu_menu` VALUES ('504', '部门固定资产购置时间统计', '/console/zcpd/bmzcStat/BMZC_GZSJStatUI.do', 'icon-jssm-bmzcgzsj', 'bmzcStat', '50', '2', '0');
 INSERT INTO `chu_menu` VALUES ('505', '部门固定资产状态统计', '/console/zcpd/bmzcStat/BMZC_ZTStatUI.do', 'icon-jssm-bmzczt', 'bmzcStat', '50', '2', '0');
-INSERT INTO `chu_menu` VALUES ('601', '员工信息', '/console/ygxx', 'icon-jssm-xtgl', 'ygxx', '0', '1', '0');
-INSERT INTO `chu_menu` VALUES ('602', '公司信息', '/console/gsxx', 'icon-jssm-sjzd', 'gsxx', '0', '1', '0');
-INSERT INTO `chu_menu` VALUES ('603', '资产信息', '/console/zcgl', 'icon-jssm-zcgl', 'zcgl', '0', '1', '0');
+INSERT INTO `chu_menu` VALUES ('601', '员工信息', '/console/ygxx/ygxxUI.do', 'icon-jssm-xtgl', 'ygxx', '60', '2', '0');
+INSERT INTO `chu_menu` VALUES ('602', '公司信息', '/console/gsxx/gsxxUI.do', 'icon-jssm-sjzd', 'gsxx', '60', '2', '0');
+INSERT INTO `chu_menu` VALUES ('603', '资产信息', '/console/zcxx/zcxxUI.do', 'icon-jssm-zcgl', 'zcgl', '60', '2', '0');
 
 -- ----------------------------
 -- Table structure for chu_role
 -- ----------------------------
 DROP TABLE IF EXISTS `chu_role`;
 CREATE TABLE `chu_role` (
-  `ID` int(5) NOT NULL auto_increment,
+  `ID` int(5) NOT NULL AUTO_INCREMENT,
   `NAME` varchar(100) NOT NULL,
-  `IS_WX` int(1) default NULL COMMENT '1（微信端角色），0（管理控制台端角色）',
-  `tybz` int(1) default '0',
-  PRIMARY KEY  (`ID`)
+  `IS_WX` int(1) DEFAULT NULL COMMENT '1（微信端角色），0（管理控制台端角色）',
+  `tybz` int(1) DEFAULT '0',
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -176,11 +177,11 @@ INSERT INTO `chu_role` VALUES ('34', '三秋树普通员工', null, '0');
 -- ----------------------------
 DROP TABLE IF EXISTS `chu_role_menu`;
 CREATE TABLE `chu_role_menu` (
-  `ID` int(5) NOT NULL auto_increment,
-  `ROLE_ID` int(5) default NULL,
-  `MENU_ID` int(5) default NULL,
-  PRIMARY KEY  (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=614 DEFAULT CHARSET=utf8;
+  `ID` int(5) NOT NULL AUTO_INCREMENT,
+  `ROLE_ID` int(5) DEFAULT NULL,
+  `MENU_ID` int(5) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=615 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of chu_role_menu
@@ -270,17 +271,18 @@ INSERT INTO `chu_role_menu` VALUES ('610', '27', '10');
 INSERT INTO `chu_role_menu` VALUES ('611', '33', '601');
 INSERT INTO `chu_role_menu` VALUES ('612', '33', '602');
 INSERT INTO `chu_role_menu` VALUES ('613', '33', '603');
+INSERT INTO `chu_role_menu` VALUES ('614', '33', '60');
 
 -- ----------------------------
 -- Table structure for chu_tag
 -- ----------------------------
 DROP TABLE IF EXISTS `chu_tag`;
 CREATE TABLE `chu_tag` (
-  `ID` int(11) NOT NULL auto_increment,
-  `APP_ID` int(11) default NULL,
-  `TAG_NO` int(11) default NULL COMMENT '用户应用标签号.',
-  `TAG_NAME` varchar(100) default NULL,
-  PRIMARY KEY  (`ID`)
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `APP_ID` int(11) DEFAULT NULL,
+  `TAG_NO` int(11) DEFAULT NULL COMMENT '用户应用标签号.',
+  `TAG_NAME` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=176 DEFAULT CHARSET=utf8 COMMENT='应用标签表';
 
 -- ----------------------------
@@ -302,15 +304,15 @@ INSERT INTO `chu_tag` VALUES ('175', '1', '3', '部门资产管理员组');
 -- ----------------------------
 DROP TABLE IF EXISTS `chu_user`;
 CREATE TABLE `chu_user` (
-  `UID` int(11) unsigned NOT NULL auto_increment,
+  `UID` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `UPW` varchar(100) NOT NULL,
   `UNAME` varchar(100) NOT NULL,
-  `NAME` varchar(100) default NULL,
+  `NAME` varchar(100) DEFAULT NULL,
   `SALT` varchar(6) NOT NULL,
-  `ROLE_ID` int(5) default NULL,
-  `APP_ID` int(11) default NULL,
-  `WX_USERNAME` varchar(30) default NULL,
-  PRIMARY KEY  (`UID`)
+  `ROLE_ID` int(5) DEFAULT NULL,
+  `APP_ID` int(11) DEFAULT NULL,
+  `WX_USERNAME` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`UID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='登录管理控制台的用户表。';
 
 -- ----------------------------
@@ -327,13 +329,13 @@ INSERT INTO `chu_user` VALUES ('9', '9CF1F1C37F88715BC69B2976FCE43653', 'hc', '�
 -- ----------------------------
 DROP TABLE IF EXISTS `chu_wxdept`;
 CREATE TABLE `chu_wxdept` (
-  `ID` int(11) NOT NULL auto_increment,
-  `APP_ID` int(11) default NULL,
-  `DEPT_NO` int(11) default NULL,
-  `DEPT_NAME` varchar(100) default NULL,
-  `DEPT_PNO` int(11) default NULL,
-  `DEPT_ORDER` int(6) default NULL,
-  PRIMARY KEY  (`ID`)
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `APP_ID` int(11) DEFAULT NULL,
+  `DEPT_NO` int(11) DEFAULT NULL,
+  `DEPT_NAME` varchar(100) DEFAULT NULL,
+  `DEPT_PNO` int(11) DEFAULT NULL,
+  `DEPT_ORDER` int(6) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=210 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -419,21 +421,21 @@ INSERT INTO `chu_wxdept` VALUES ('209', '1', '395', '2014级教师', '18', '2147
 -- ----------------------------
 DROP TABLE IF EXISTS `chu_wxuser`;
 CREATE TABLE `chu_wxuser` (
-  `ID` int(11) NOT NULL auto_increment,
-  `USERID` varchar(30) default NULL,
-  `NAME` varchar(60) default NULL,
-  `DEPARTMENT` varchar(60) default NULL,
-  `POSITION` varchar(60) default NULL,
-  `MOBILE` varchar(20) default NULL,
-  `GENDER` int(1) default NULL COMMENT '男("1"), 女("2")',
-  `EMAIL` varchar(30) default NULL,
-  `WEIXINID` varchar(30) default NULL,
-  `AVATAR` varchar(100) default NULL,
-  `STATUS` int(1) default NULL COMMENT '全部成员("0"), 已关注("1"), 禁用("2"), 未关注("4")',
-  `EXTATTR` varchar(200) default NULL,
-  `APP_ID` int(11) default NULL,
-  `TAG_NO` varchar(20) default NULL,
-  PRIMARY KEY  (`ID`)
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `USERID` varchar(30) DEFAULT NULL,
+  `NAME` varchar(60) DEFAULT NULL,
+  `DEPARTMENT` varchar(60) DEFAULT NULL,
+  `POSITION` varchar(60) DEFAULT NULL,
+  `MOBILE` varchar(20) DEFAULT NULL,
+  `GENDER` int(1) DEFAULT NULL COMMENT '男("1"), 女("2")',
+  `EMAIL` varchar(30) DEFAULT NULL,
+  `WEIXINID` varchar(30) DEFAULT NULL,
+  `AVATAR` varchar(100) DEFAULT NULL,
+  `STATUS` int(1) DEFAULT NULL COMMENT '全部成员("0"), 已关注("1"), 禁用("2"), 未关注("4")',
+  `EXTATTR` varchar(200) DEFAULT NULL,
+  `APP_ID` int(11) DEFAULT NULL,
+  `TAG_NO` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=573 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -629,15 +631,15 @@ INSERT INTO `chu_wxuser` VALUES ('572', 'campus_2547303', '陈松德', '[395]', 
 -- ----------------------------
 DROP TABLE IF EXISTS `chu_zt_action`;
 CREATE TABLE `chu_zt_action` (
-  `ID` int(11) NOT NULL auto_increment,
-  `APP_ID` int(11) default NULL COMMENT '对应于CHU_TAG的ID。依据TAG的不同，我们为不同用户设定不同的身份。',
-  `TAG_NAME` varchar(20) default NULL,
-  `ZT` int(2) default NULL,
-  `IMG_URL` varchar(100) default NULL,
-  `ACTION_TITLE` varchar(20) default NULL COMMENT '按钮名称',
-  `ACTION_NAME` varchar(20) default NULL COMMENT '按钮的操作，对应于VUX中的组件名称',
-  `QUERY_PARAM` varchar(200) default NULL COMMENT 'JSON字符串',
-  PRIMARY KEY  (`ID`)
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `APP_ID` int(11) DEFAULT NULL COMMENT '对应于CHU_TAG的ID。依据TAG的不同，我们为不同用户设定不同的身份。',
+  `TAG_NAME` varchar(20) DEFAULT NULL,
+  `ZT` int(2) DEFAULT NULL,
+  `IMG_URL` varchar(100) DEFAULT NULL,
+  `ACTION_TITLE` varchar(20) DEFAULT NULL COMMENT '按钮名称',
+  `ACTION_NAME` varchar(20) DEFAULT NULL COMMENT '按钮的操作，对应于VUX中的组件名称',
+  `QUERY_PARAM` varchar(200) DEFAULT NULL COMMENT 'JSON字符串',
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -680,15 +682,15 @@ INSERT INTO `chu_zt_action` VALUES ('31', '17', '部门资产管理员组', '12'
 -- ----------------------------
 DROP TABLE IF EXISTS `c_fj`;
 CREATE TABLE `c_fj` (
-  `ID` int(11) NOT NULL auto_increment,
-  `APP_ID` int(11) default NULL,
-  `JZW_ID` int(11) default NULL,
-  `FLOOR` varchar(20) default NULL,
-  `ROOM` varchar(20) default NULL,
-  `DEPT_NAME` varchar(100) default NULL COMMENT '与企业微信号中的组织架构保持一致',
-  `GLR` varchar(30) default NULL COMMENT '管理人的微信号userid',
-  `TYBZ` int(1) default '0' COMMENT '报废（1）、未报废（0）',
-  PRIMARY KEY  (`ID`),
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `APP_ID` int(11) DEFAULT NULL,
+  `JZW_ID` int(11) DEFAULT NULL,
+  `FLOOR` varchar(20) DEFAULT NULL,
+  `ROOM` varchar(20) DEFAULT NULL,
+  `DEPT_NAME` varchar(100) DEFAULT NULL COMMENT '与企业微信号中的组织架构保持一致',
+  `GLR` varchar(30) DEFAULT NULL COMMENT '管理人的微信号userid',
+  `TYBZ` int(1) DEFAULT '0' COMMENT '报废（1）、未报废（0）',
+  PRIMARY KEY (`ID`),
   KEY `fk_fj` (`JZW_ID`),
   CONSTRAINT `fk_fj` FOREIGN KEY (`JZW_ID`) REFERENCES `c_jzw` (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='楼层、房间等相关信息';
@@ -707,10 +709,10 @@ INSERT INTO `c_fj` VALUES ('5', '1', '4', '1楼', '101房间', '体育组', 'cam
 -- ----------------------------
 DROP TABLE IF EXISTS `c_jzlx`;
 CREATE TABLE `c_jzlx` (
-  `ID` int(3) NOT NULL auto_increment,
-  `MC` varchar(100) default NULL,
-  `REMARK` varchar(200) default NULL,
-  PRIMARY KEY  (`ID`)
+  `ID` int(3) NOT NULL AUTO_INCREMENT,
+  `MC` varchar(100) DEFAULT NULL,
+  `REMARK` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -734,15 +736,15 @@ INSERT INTO `c_jzlx` VALUES ('12', '其他建筑类', '停车场库');
 -- ----------------------------
 DROP TABLE IF EXISTS `c_jzw`;
 CREATE TABLE `c_jzw` (
-  `ID` int(11) NOT NULL auto_increment,
-  `APP_ID` int(11) default NULL,
-  `XQ_ID` int(11) default NULL,
-  `LX_ID` int(3) default NULL,
-  `MC` varchar(100) default NULL,
-  `DZ` varchar(200) default NULL COMMENT '常规意义上的位置描述。如：XXX路XX号',
-  `POI` varchar(200) default NULL COMMENT '存放建筑物的地理信息，可以籍此使用微信进行定位。',
-  `TYBZ` int(1) default '0' COMMENT '报废（1）、未报废（0）',
-  PRIMARY KEY  (`ID`),
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `APP_ID` int(11) DEFAULT NULL,
+  `XQ_ID` int(11) DEFAULT NULL,
+  `LX_ID` int(3) DEFAULT NULL,
+  `MC` varchar(100) DEFAULT NULL,
+  `DZ` varchar(200) DEFAULT NULL COMMENT '常规意义上的位置描述。如：XXX路XX号',
+  `POI` varchar(200) DEFAULT NULL COMMENT '存放建筑物的地理信息，可以籍此使用微信进行定位。',
+  `TYBZ` int(1) DEFAULT '0' COMMENT '报废（1）、未报废（0）',
+  PRIMARY KEY (`ID`),
   KEY `fk_jzw` (`XQ_ID`),
   CONSTRAINT `fk_jzw` FOREIGN KEY (`XQ_ID`) REFERENCES `c_xq` (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='教学楼、实验楼、教工宿舍、学生宿舍、食堂等';
@@ -761,12 +763,12 @@ INSERT INTO `c_jzw` VALUES ('5', '1', '3', '2', '明德楼', '', null, '0');
 -- ----------------------------
 DROP TABLE IF EXISTS `c_xq`;
 CREATE TABLE `c_xq` (
-  `ID` int(11) NOT NULL auto_increment,
-  `APP_ID` int(11) default NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `APP_ID` int(11) DEFAULT NULL,
   `XQMC` varchar(50) NOT NULL,
-  `XQDZ` varchar(100) default NULL,
-  `YB` varchar(20) default NULL,
-  PRIMARY KEY  (`ID`)
+  `XQDZ` varchar(100) DEFAULT NULL,
+  `YB` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='某些学校有多个校区。';
 
 -- ----------------------------
@@ -781,13 +783,13 @@ INSERT INTO `c_xq` VALUES ('3', '1', '青山校区', '', '');
 -- ----------------------------
 DROP TABLE IF EXISTS `c_zcgl`;
 CREATE TABLE `c_zcgl` (
-  `ID` int(11) NOT NULL auto_increment,
-  `APP_ID` int(11) default NULL,
-  `DEPT_NO` int(11) default NULL,
-  `DEPT_NAME` varchar(100) default NULL COMMENT '与企业微信号中的组织架构保持一致',
-  `FZR` varchar(30) default NULL,
-  `GLR` varchar(30) default NULL,
-  PRIMARY KEY  (`ID`)
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `APP_ID` int(11) DEFAULT NULL,
+  `DEPT_NO` int(11) DEFAULT NULL,
+  `DEPT_NAME` varchar(100) DEFAULT NULL COMMENT '与企业微信号中的组织架构保持一致',
+  `FZR` varchar(30) DEFAULT NULL,
+  `GLR` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8 COMMENT='资产管理部门相关信息';
 
 -- ----------------------------
@@ -873,16 +875,16 @@ INSERT INTO `c_zcgl` VALUES ('88', '1', '395', '2014级教师', null, null);
 -- ----------------------------
 DROP TABLE IF EXISTS `c_zclx`;
 CREATE TABLE `c_zclx` (
-  `ID` int(11) NOT NULL auto_increment,
-  `APP_ID` int(11) default NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `APP_ID` int(11) DEFAULT NULL,
   `LX_ID` varchar(8) NOT NULL,
-  `LX_PID` varchar(8) default NULL,
-  `MC` varchar(100) default NULL,
-  `ZJNX` decimal(3,1) default NULL COMMENT '单位年',
-  `REMARK` varchar(80) default NULL,
-  `PIC_URL` varchar(100) default NULL COMMENT '依据资产类型，提供缺省的资产图片',
-  `IMG_VERSION` int(5) default '0' COMMENT '图片版本号',
-  PRIMARY KEY  (`ID`)
+  `LX_PID` varchar(8) DEFAULT NULL,
+  `MC` varchar(100) DEFAULT NULL,
+  `ZJNX` decimal(3,1) DEFAULT NULL COMMENT '单位年',
+  `REMARK` varchar(80) DEFAULT NULL,
+  `PIC_URL` varchar(100) DEFAULT NULL COMMENT '依据资产类型，提供缺省的资产图片',
+  `IMG_VERSION` int(5) DEFAULT '0' COMMENT '图片版本号',
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=171 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1064,20 +1066,20 @@ INSERT INTO `c_zclx` VALUES ('170', '1', '00100170', '001', '工作品种1', '3.
 -- ----------------------------
 DROP TABLE IF EXISTS `j_rw`;
 CREATE TABLE `j_rw` (
-  `ID` int(11) NOT NULL auto_increment,
-  `APP_ID` int(11) default NULL,
-  `LX` int(1) default NULL COMMENT '日常巡检、故障维修',
-  `KSSJ` datetime default NULL,
-  `JSSJ` datetime default NULL,
-  `CZR` varchar(30) default NULL,
-  `CZ_REMARK` varchar(200) default NULL,
-  `YSR` varchar(30) default NULL,
-  `YS_REMARK` varchar(200) default NULL,
-  `YSSJ` datetime default NULL,
-  `TOTAL` int(4) default NULL,
-  `FINISH_COUNT` int(4) default '0',
-  `FINISH` int(1) default '0' COMMENT '完成（1），未完成（0）',
-  PRIMARY KEY  (`ID`)
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `APP_ID` int(11) DEFAULT NULL,
+  `LX` int(1) DEFAULT NULL COMMENT '日常巡检、故障维修',
+  `KSSJ` datetime DEFAULT NULL,
+  `JSSJ` datetime DEFAULT NULL,
+  `CZR` varchar(30) DEFAULT NULL,
+  `CZ_REMARK` varchar(200) DEFAULT NULL,
+  `YSR` varchar(30) DEFAULT NULL,
+  `YS_REMARK` varchar(200) DEFAULT NULL,
+  `YSSJ` datetime DEFAULT NULL,
+  `TOTAL` int(4) DEFAULT NULL,
+  `FINISH_COUNT` int(4) DEFAULT '0',
+  `FINISH` int(1) DEFAULT '0' COMMENT '完成（1），未完成（0）',
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='采购、入库、领用、巡检、维修等';
 
 -- ----------------------------
@@ -1104,11 +1106,11 @@ INSERT INTO `j_rw` VALUES ('15', '17', '0', '2017-08-11 00:00:00', '2017-08-12 0
 -- ----------------------------
 DROP TABLE IF EXISTS `j_rwxz`;
 CREATE TABLE `j_rwxz` (
-  `ID` int(11) NOT NULL auto_increment,
-  `RWID` int(11) default NULL,
-  `ZCID` int(11) default NULL,
-  `FINISH` int(1) default '0' COMMENT '完成（1），未完成（0）',
-  PRIMARY KEY  (`ID`)
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `RWID` int(11) DEFAULT NULL,
+  `ZCID` int(11) DEFAULT NULL,
+  `FINISH` int(1) DEFAULT '0' COMMENT '完成（1），未完成（0）',
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1206,25 +1208,25 @@ INSERT INTO `j_rwxz` VALUES ('86', '15', '9', '1');
 -- ----------------------------
 DROP TABLE IF EXISTS `j_zc`;
 CREATE TABLE `j_zc` (
-  `ID` int(11) NOT NULL auto_increment,
-  `APP_ID` int(11) default NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `APP_ID` int(11) DEFAULT NULL,
   `DM` varchar(36) NOT NULL COMMENT '有两种方式。如果用户不提供资产编号，系统使用UUID方式自动生成。资产编号是资产二维码的生成依据',
-  `MC` varchar(100) default NULL,
-  `LX_ID` int(11) default NULL COMMENT '依据南京大学仪器设备常用分类号设计',
-  `XH` varchar(100) default NULL,
-  `CCBH` varchar(50) default NULL,
+  `MC` varchar(100) DEFAULT NULL,
+  `LX_ID` int(11) DEFAULT NULL COMMENT '依据南京大学仪器设备常用分类号设计',
+  `XH` varchar(100) DEFAULT NULL,
+  `CCBH` varchar(50) DEFAULT NULL,
   `COST` decimal(9,2) NOT NULL,
-  `NUM` int(5) default '1',
-  `CFDD` varchar(200) default NULL COMMENT '可以是建筑物、楼层、房间号等。以JSON方式存放。',
-  `SYR` varchar(30) default NULL,
-  `ZCGL_ID` int(11) default NULL COMMENT '与企业微信号中的组织架构保持一致',
-  `PIC_URL` varchar(100) default NULL COMMENT '资产照片',
-  `IMG_VERSION` int(5) default '0' COMMENT '图片版本号',
-  `GZSJ` date default NULL,
-  `ZJNX` decimal(3,1) default NULL COMMENT '单位年',
-  `ZT` int(2) default '0' COMMENT '未使用，使用中、维修中、闲置、申请维修、申请报废、申请闲置、巡检中、报废',
-  `TYBZ` int(1) default '0',
-  PRIMARY KEY  (`ID`)
+  `NUM` int(5) DEFAULT '1',
+  `CFDD` varchar(200) DEFAULT NULL COMMENT '可以是建筑物、楼层、房间号等。以JSON方式存放。',
+  `SYR` varchar(30) DEFAULT NULL,
+  `ZCGL_ID` int(11) DEFAULT NULL COMMENT '与企业微信号中的组织架构保持一致',
+  `PIC_URL` varchar(100) DEFAULT NULL COMMENT '资产照片',
+  `IMG_VERSION` int(5) DEFAULT '0' COMMENT '图片版本号',
+  `GZSJ` date DEFAULT NULL,
+  `ZJNX` decimal(3,1) DEFAULT NULL COMMENT '单位年',
+  `ZT` int(2) DEFAULT '0' COMMENT '未使用，使用中、维修中、闲置、申请维修、申请报废、申请闲置、巡检中、报废',
+  `TYBZ` int(1) DEFAULT '0',
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=222 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1457,13 +1459,13 @@ INSERT INTO `j_zc` VALUES ('221', '1', '1000018', '消防栓6', '2', '', '', '20
 -- ----------------------------
 DROP TABLE IF EXISTS `l_msg`;
 CREATE TABLE `l_msg` (
-  `ID` int(11) NOT NULL auto_increment,
-  `APP_ID` int(11) default NULL,
-  `FSSJ` datetime default NULL,
-  `JSR` varchar(30) default NULL,
-  `LX` int(1) default NULL COMMENT '系统通知（0），系统预警（1）、消息通告（2）、隐患上报（3）',
-  `NR` varchar(1000) default NULL,
-  PRIMARY KEY  (`ID`)
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `APP_ID` int(11) DEFAULT NULL,
+  `FSSJ` datetime DEFAULT NULL,
+  `JSR` varchar(30) DEFAULT NULL,
+  `LX` int(1) DEFAULT NULL COMMENT '系统通知（0），系统预警（1）、消息通告（2）、隐患上报（3）',
+  `NR` varchar(1000) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1475,16 +1477,16 @@ CREATE TABLE `l_msg` (
 -- ----------------------------
 DROP TABLE IF EXISTS `l_zt`;
 CREATE TABLE `l_zt` (
-  `ID` int(11) NOT NULL auto_increment,
-  `APP_ID` int(11) default NULL,
-  `ZCDM` varchar(36) default NULL COMMENT '对应于J_ZC中的DM',
-  `JLSJ` datetime default NULL,
-  `JLR` varchar(30) default NULL,
-  `POI` varchar(200) default NULL,
-  `OLD_ZT` int(2) default NULL,
-  `NEW_ZT` int(2) default NULL,
-  `REMARK` varchar(255) default NULL,
-  PRIMARY KEY  (`ID`)
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `APP_ID` int(11) DEFAULT NULL,
+  `ZCDM` varchar(36) DEFAULT NULL COMMENT '对应于J_ZC中的DM',
+  `JLSJ` datetime DEFAULT NULL,
+  `JLR` varchar(30) DEFAULT NULL,
+  `POI` varchar(200) DEFAULT NULL,
+  `OLD_ZT` int(2) DEFAULT NULL,
+  `NEW_ZT` int(2) DEFAULT NULL,
+  `REMARK` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1496,12 +1498,12 @@ CREATE TABLE `l_zt` (
 -- ----------------------------
 DROP TABLE IF EXISTS `l_ztxz`;
 CREATE TABLE `l_ztxz` (
-  `ID` int(11) NOT NULL auto_increment,
-  `APP_ID` int(11) default NULL,
-  `JL_ID` int(11) default NULL COMMENT '指向上级L_ZT主键',
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `APP_ID` int(11) DEFAULT NULL,
+  `JL_ID` int(11) DEFAULT NULL COMMENT '指向上级L_ZT主键',
   `MEDIA_TYPE` varchar(30) NOT NULL,
   `WX_MEDIA_ID` varchar(100) NOT NULL,
-  PRIMARY KEY  (`ID`)
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1514,36 +1516,38 @@ CREATE TABLE `l_ztxz` (
 DROP TABLE IF EXISTS `sqs_company`;
 CREATE TABLE `sqs_company` (
   `ID` int(11) NOT NULL,
-  `COM_NAME` varchar(200) default NULL COMMENT '公司名称',
-  `COM_CODE` varchar(11) default NULL COMMENT '公司编码',
-  `STATUS` int(1) default '1' COMMENT '状态1：招人 2：招满 3：取消招聘',
-  `RECRUITS_NUM` int(8) default NULL COMMENT '招聘人数',
-  `JOB` varchar(400) default NULL COMMENT '职位',
-  `EXP_REMARK` varchar(500) default NULL COMMENT '特殊要求',
-  `PAY` varchar(20) default NULL COMMENT '薪资',
-  `SETTLEMENT_CYCLE` varchar(50) default NULL COMMENT '结算周期',
-  `OFF_DAY` int(1) default NULL COMMENT '休假 月/天',
-  `TREATMENT` varchar(255) default NULL COMMENT '待遇',
-  `COM_CONTACT` varchar(20) default NULL COMMENT '联系电话',
-  `CONTACT_NAME` varchar(50) default NULL COMMENT '联系人姓名',
-  `COM_ADDRESS` varchar(255) default NULL,
-  `SERVICE_STATUS` int(1) default NULL COMMENT '任职状态',
-  `DELETE_STATUS` int(1) NOT NULL default '1' COMMENT '删除状态状态 1存在 2 删除',
-  `VDEF1` varchar(50) default NULL COMMENT '备用字段1',
-  `VDEF2` varchar(50) default NULL COMMENT '备用字段2',
-  `VDEF3` varchar(50) default NULL COMMENT '备用字段3',
-  `VDEF4` varchar(50) default NULL COMMENT '备用字段4',
-  `VDEF5` varchar(50) default NULL COMMENT '备用字段5',
+  `COM_NAME` varchar(200) DEFAULT NULL COMMENT '公司名称',
+  `COM_CODE` varchar(11) DEFAULT NULL COMMENT '公司编码',
+  `STATUS` int(1) DEFAULT '1' COMMENT '状态1：招人 2：招满 3：取消招聘',
+  `RECRUITS_NUM` int(8) DEFAULT NULL COMMENT '招聘人数',
+  `JOB` varchar(400) DEFAULT NULL COMMENT '职位',
+  `EXP_REMARK` varchar(500) DEFAULT NULL COMMENT '特殊要求',
+  `PAY` varchar(20) DEFAULT NULL COMMENT '薪资',
+  `SETTLEMENT_CYCLE` varchar(50) DEFAULT NULL COMMENT '结算周期',
+  `OFF_DAY` int(1) DEFAULT NULL COMMENT '休假 月/天',
+  `TREATMENT` varchar(255) DEFAULT NULL COMMENT '待遇',
+  `COM_CONTACT` varchar(20) DEFAULT NULL COMMENT '联系电话',
+  `CONTACT_NAME` varchar(50) DEFAULT NULL COMMENT '联系人姓名',
+  `COM_ADDRESS` varchar(255) DEFAULT NULL,
+  `SERVICE_STATUS` int(1) DEFAULT NULL COMMENT '任职状态',
+  `DELETE_STATUS` int(1) NOT NULL DEFAULT '1' COMMENT '删除状态状态 1存在 2 删除',
+  `VDEF1` varchar(50) DEFAULT NULL COMMENT '备用字段1',
+  `VDEF2` varchar(50) DEFAULT NULL COMMENT '备用字段2',
+  `VDEF3` varchar(50) DEFAULT NULL COMMENT '备用字段3',
+  `VDEF4` varchar(50) DEFAULT NULL COMMENT '备用字段4',
+  `VDEF5` varchar(50) DEFAULT NULL COMMENT '备用字段5',
   `CREATE_ON` datetime NOT NULL COMMENT '创建时间',
   `CREATE_BY` varchar(50) NOT NULL COMMENT '创建人',
   `UPDATE_ON` datetime NOT NULL COMMENT '最后更新时间',
   `UPDATE_BY` varchar(50) NOT NULL COMMENT '最后更新人',
-  PRIMARY KEY  (`ID`)
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sqs_company
 -- ----------------------------
+INSERT INTO `sqs_company` VALUES ('1', 'sd', 'ds', '1', '12', 'dsd', 'dsd', 'dsd', 'dsd', '12', 'dsd', 'dsd', 'dsd', 'dsd', '12', '1', 'ds', 'ds', 'ds', 'ds', 'ds', '2018-03-09 18:51:56', 'ds', '2018-03-09 18:52:01', 'dsd');
+INSERT INTO `sqs_company` VALUES ('2', 'sd', 'ds', '1', '12', 'dsd', 'dsd', 'dsd', 'dsd', '12', 'dsd', 'dsd', 'dsd', 'dsd', '12', '1', 'ds', 'ds', 'ds', 'ds', 'ds', '2018-03-09 18:51:56', 'ds', '2018-03-09 18:52:01', 'dsd');
 
 -- ----------------------------
 -- Table structure for sqs_emp
@@ -1551,32 +1555,36 @@ CREATE TABLE `sqs_company` (
 DROP TABLE IF EXISTS `sqs_emp`;
 CREATE TABLE `sqs_emp` (
   `ID` int(11) NOT NULL COMMENT '主键',
-  `EMP_CODE` varchar(11) default NULL COMMENT '员工编码',
-  `EMP_NAME` varchar(50) default NULL COMMENT '员工姓名',
-  `EMP_AGE` int(3) default NULL COMMENT '员工年龄',
-  `ACCOUNT` varchar(20) default NULL COMMENT '账号',
-  `EMP_CONTACT` varchar(20) default NULL COMMENT '联系方式',
-  `EXP_PAY` varchar(32) default NULL COMMENT '期望薪资',
-  `WEEKDAY` varchar(50) default NULL COMMENT '可工作日期',
-  `EXP_REMARK` varchar(255) default NULL COMMENT '特殊要求',
-  `PRIORITY` int(11) default NULL COMMENT '优先等级，用于排序',
-  `SPECIALTY` varchar(255) default NULL COMMENT '特长',
-  `DELETE_STATUS` int(1) default '1' COMMENT '删除状态状态 1存在 2 删除',
-  `VDEF1` varchar(50) default NULL COMMENT '备用字段1',
-  `VDEF2` varchar(50) default NULL COMMENT '备用字段2',
-  `VDEF3` varchar(50) default NULL COMMENT '备用字段3',
-  `VDEF4` varchar(50) default NULL COMMENT '备用字段4',
-  `VDEF5` varchar(50) default NULL COMMENT '备用字段5',
+  `EMP_CODE` varchar(11) DEFAULT NULL COMMENT '员工编码',
+  `EMP_NAME` varchar(50) DEFAULT NULL COMMENT '员工姓名',
+  `EMP_AGE` int(3) DEFAULT NULL COMMENT '员工年龄',
+  `ACCOUNT` varchar(20) DEFAULT NULL COMMENT '账号',
+  `EMP_CONTACT` varchar(20) DEFAULT NULL COMMENT '联系方式',
+  `EXP_PAY` varchar(32) DEFAULT NULL COMMENT '期望薪资',
+  `WEEKDAY` varchar(50) DEFAULT NULL COMMENT '可工作日期',
+  `EXP_REMARK` varchar(255) DEFAULT NULL COMMENT '特殊要求',
+  `PRIORITY` int(11) DEFAULT NULL COMMENT '优先等级，用于排序',
+  `SPECIALTY` varchar(255) DEFAULT NULL COMMENT '特长',
+  `DELETE_STATUS` int(1) DEFAULT '1' COMMENT '删除状态状态 1存在 2 删除',
+  `VDEF1` varchar(50) DEFAULT NULL COMMENT '备用字段1',
+  `VDEF2` varchar(50) DEFAULT NULL COMMENT '备用字段2',
+  `VDEF3` varchar(50) DEFAULT NULL COMMENT '备用字段3',
+  `VDEF4` varchar(50) DEFAULT NULL COMMENT '备用字段4',
+  `VDEF5` varchar(50) DEFAULT NULL COMMENT '备用字段5',
   `CREATE_ON` datetime NOT NULL COMMENT '创建时间',
   `CREATE_BY` varchar(50) NOT NULL COMMENT '创建人',
   `UPDATE_ON` datetime NOT NULL COMMENT '最后更新时间',
   `UPDATE_BY` varchar(50) NOT NULL COMMENT '最后更新人',
-  PRIMARY KEY  (`ID`)
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sqs_emp
 -- ----------------------------
+INSERT INTO `sqs_emp` VALUES ('1', '101', 'ss', '22', 'dfd', '15161312', 'dfd', 'fdf', 'fdf', '1', '13', '1', 'fd', 'fdf', 'fdf', 'fdf', 'fd', '2018-03-09 18:01:27', 'fd', '2018-03-09 18:01:37', 'fdf');
+INSERT INTO `sqs_emp` VALUES ('2', '102', 'ss', '22', 'dfd', '15161312', 'dfd', 'fdf', 'fdf', '1', '13', '1', 'fd', 'fdf', 'fdf', 'fdf', 'fd', '2018-03-09 18:01:27', 'fd', '2018-03-09 18:01:37', 'fdf');
+INSERT INTO `sqs_emp` VALUES ('3', '102', 'ss', '22', 'dfd', '15161312', 'dfd', 'fdf', 'fdf', '1', '13', '1', 'fd', 'fdf', 'fdf', 'fdf', 'fd', '2018-03-09 18:01:27', 'fd', '2018-03-09 18:01:37', 'fdf');
+INSERT INTO `sqs_emp` VALUES ('4', '102', 'ss', '22', 'dfd', '15161312', 'dfd', 'fdf', 'fdf', '1', '13', '1', 'fd', 'fdf', 'fdf', 'fdf', 'fd', '2018-03-09 18:01:27', 'fd', '2018-03-09 18:01:37', 'fdf');
 
 -- ----------------------------
 -- Table structure for sqs_finance
@@ -1584,97 +1592,70 @@ CREATE TABLE `sqs_emp` (
 DROP TABLE IF EXISTS `sqs_finance`;
 CREATE TABLE `sqs_finance` (
   `ID` int(11) NOT NULL,
-  `EMP_ID` int(11) default NULL COMMENT '员工表主键',
-  `COM_ID` int(11) default NULL COMMENT '招聘公司表主键',
-  `TRANSACTION` varchar(255) default NULL,
-  `EMP_NAME` varchar(50) default '' COMMENT '员工姓名',
-  `SEND_TIME` datetime default NULL COMMENT '派出时间',
-  `COM_NAME` varchar(255) default NULL COMMENT '工作单位',
-  `PAY` varchar(255) default NULL COMMENT '薪资',
-  `WORK_DAY` int(11) default NULL COMMENT '工作日期',
-  `GROSS_PAY` varchar(255) default NULL COMMENT '应发工资',
-  `EMP_COST` varchar(255) default NULL COMMENT '人员管理费',
-  `COM_COST` varchar(255) default NULL COMMENT '商家管理费',
-  `PAYROLL` varchar(255) default NULL COMMENT '实发工资',
-  `EMP_COST_STATUS` int(1) default NULL COMMENT '人员管理费支付状态',
-  `COM_COST_STATUS` int(1) default NULL COMMENT '商家管理费支付状态',
-  `EMP_ACCOUNT` varchar(255) default NULL COMMENT '人员账号',
-  `DELETE_STATUS` int(1) default '1' COMMENT '删除状态状态 1存在 2 删除',
-  `VDEF1` varchar(50) default NULL COMMENT '备用字段1',
-  `VDEF2` varchar(50) default NULL COMMENT '备用字段2',
-  `VDEF3` varchar(50) default NULL COMMENT '备用字段3',
-  `VDEF4` varchar(50) default NULL COMMENT '备用字段4',
-  `VDEF5` varchar(50) default NULL COMMENT '备用字段5',
+  `EMP_ID` int(11) DEFAULT NULL COMMENT '员工表主键',
+  `COM_ID` int(11) DEFAULT NULL COMMENT '招聘公司表主键',
+  `TRANSACTION` varchar(255) DEFAULT NULL,
+  `EMP_NAME` varchar(50) DEFAULT '' COMMENT '员工姓名',
+  `SEND_TIME` datetime DEFAULT NULL COMMENT '派出时间',
+  `COM_NAME` varchar(255) DEFAULT NULL COMMENT '工作单位',
+  `PAY` varchar(255) DEFAULT NULL COMMENT '薪资',
+  `WORK_DAY` int(11) DEFAULT NULL COMMENT '工作日期',
+  `GROSS_PAY` varchar(255) DEFAULT NULL COMMENT '应发工资',
+  `EMP_COST` varchar(255) DEFAULT NULL COMMENT '人员管理费',
+  `COM_COST` varchar(255) DEFAULT NULL COMMENT '商家管理费',
+  `PAYROLL` varchar(255) DEFAULT NULL COMMENT '实发工资',
+  `EMP_COST_STATUS` int(1) DEFAULT NULL COMMENT '人员管理费支付状态',
+  `COM_COST_STATUS` int(1) DEFAULT NULL COMMENT '商家管理费支付状态',
+  `EMP_ACCOUNT` varchar(255) DEFAULT NULL COMMENT '人员账号',
+  `DELETE_STATUS` int(1) DEFAULT '1' COMMENT '删除状态状态 1存在 2 删除',
+  `VDEF1` varchar(50) DEFAULT NULL COMMENT '备用字段1',
+  `VDEF2` varchar(50) DEFAULT NULL COMMENT '备用字段2',
+  `VDEF3` varchar(50) DEFAULT NULL COMMENT '备用字段3',
+  `VDEF4` varchar(50) DEFAULT NULL COMMENT '备用字段4',
+  `VDEF5` varchar(50) DEFAULT NULL COMMENT '备用字段5',
   `CREATE_ON` datetime NOT NULL COMMENT '创建时间',
   `CREATE_BY` varchar(50) NOT NULL COMMENT '创建人',
   `UPDATE_ON` datetime NOT NULL COMMENT '最后更新时间',
   `UPDATE_BY` varchar(50) NOT NULL COMMENT '最后更新人',
-  PRIMARY KEY  (`ID`)
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sqs_finance
 -- ----------------------------
+INSERT INTO `sqs_finance` VALUES ('1', '1', '1', 'fdf', 'fdf', '2018-03-09 19:06:39', 'fdf', 'fdf', '1', 'fdf', 'fdf', 'fdf', 'fdf', '1', '1', 'fdsf', '1', 'fdf', 'fdf', 'fdf', 'fdf', 'fdf', '2018-03-09 19:07:06', 'fdf', '2018-03-09 19:07:10', 'fdf');
+INSERT INTO `sqs_finance` VALUES ('2', '1', '1', 'fdf', 'fdf', '2018-03-09 19:06:39', 'fdf', 'fdf', '1', 'fdf', 'fdf', 'fdf', 'fdf', '1', '1', 'fdsf', '1', 'fdf', 'fdf', 'fdf', 'fdf', 'fdf', '2018-03-09 19:07:06', 'fdf', '2018-03-09 19:07:10', 'fdf');
+INSERT INTO `sqs_finance` VALUES ('3', '1', '1', 'fdf', 'fdf', '2018-03-09 19:06:39', 'fdf', 'fdf', '1', 'fdf', 'fdf', 'fdf', 'fdf', '1', '1', 'fdsf', '1', 'fdf', 'fdf', 'fdf', 'fdf', 'fdf', '2018-03-09 19:07:06', 'fdf', '2018-03-09 19:07:10', 'fdf');
 
 -- ----------------------------
 -- View structure for v_fj
 -- ----------------------------
 DROP VIEW IF EXISTS `v_fj`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`127.0.0.1`  VIEW `v_fj` AS select fj.id fj_id, fj.app_id, fj.floor, fj.room, fj.dept_name, fj.glr,
-       jzw.XQ_ID xqid, xq.XQMC, jzw.id jzwid, jzw.mc jzw, jzw.dz, jzw.poi, fj.tybz
-from c_fj fj
-left outer join c_jzw jzw on (jzw.id = fj.jzw_id)
-left outer join c_xq xq on (jzw.xq_id = xq.id)
-order by fj.id ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`127.0.0.1` SQL SECURITY DEFINER VIEW `v_fj` AS select `fj`.`ID` AS `fj_id`,`fj`.`APP_ID` AS `app_id`,`fj`.`FLOOR` AS `floor`,`fj`.`ROOM` AS `room`,`fj`.`DEPT_NAME` AS `dept_name`,`fj`.`GLR` AS `glr`,`jzw`.`XQ_ID` AS `xqid`,`xq`.`XQMC` AS `XQMC`,`jzw`.`ID` AS `jzwid`,`jzw`.`MC` AS `jzw`,`jzw`.`DZ` AS `dz`,`jzw`.`POI` AS `poi`,`fj`.`TYBZ` AS `tybz` from ((`c_fj` `fj` left join `c_jzw` `jzw` on((`jzw`.`ID` = `fj`.`JZW_ID`))) left join `c_xq` `xq` on((`jzw`.`XQ_ID` = `xq`.`ID`))) order by `fj`.`ID` ;
 
 -- ----------------------------
 -- View structure for v_jzw
 -- ----------------------------
 DROP VIEW IF EXISTS `v_jzw`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`127.0.0.1`  VIEW `v_jzw` AS select jzw.id jzw_id, jzw.app_id, xq.id xqid, xq.xqmc, lx.id lxid, lx.mc lxmc, jzw.mc jzw, jzw.dz, jzw.poi, jzw.tybz
-from c_jzw jzw
-join c_xq xq on (jzw.xq_id = xq.id)
-join c_jzlx lx on (jzw.lx_id = lx.id)
-order by jzw.id ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`127.0.0.1` SQL SECURITY DEFINER VIEW `v_jzw` AS select `jzw`.`ID` AS `jzw_id`,`jzw`.`APP_ID` AS `app_id`,`xq`.`ID` AS `xqid`,`xq`.`XQMC` AS `xqmc`,`lx`.`ID` AS `lxid`,`lx`.`MC` AS `lxmc`,`jzw`.`MC` AS `jzw`,`jzw`.`DZ` AS `dz`,`jzw`.`POI` AS `poi`,`jzw`.`TYBZ` AS `tybz` from ((`c_jzw` `jzw` join `c_xq` `xq` on((`jzw`.`XQ_ID` = `xq`.`ID`))) join `c_jzlx` `lx` on((`jzw`.`LX_ID` = `lx`.`ID`))) order by `jzw`.`ID` ;
 
 -- ----------------------------
 -- View structure for v_zc
 -- ----------------------------
 DROP VIEW IF EXISTS `v_zc`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`127.0.0.1` SQL SECURITY DEFINER  VIEW `v_zc` AS select zc.id zcid, zc.app_id, zc.dm zcdm, zc.mc zc,
-       lx.LX_ID zclxId,lx.mc zclx, zc.xh, zc.ccbh, zc.COST, zc.num, zc.cfdd, zc.syr,
-	   gl.DEPT_NO,gl.dept_name, gl.fzr, gl.glr, 
-     IFNULL(zc.pic_url, lx.PIC_URL) PIC_URL, 
-     case when zc.PIC_URL is null then lx.IMG_VERSION
-          else zc.IMG_VERSION
-     end IMG_VERSION,
-	   zc.gzsj, zc.zjnx, zc.zt zczt
-from j_zc zc
-join c_zclx lx on (zc.lx_id = lx.id)
-left outer join c_zcgl gl on (zc.zcgl_id = gl.id) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`127.0.0.1` SQL SECURITY DEFINER VIEW `v_zc` AS select `zc`.`ID` AS `zcid`,`zc`.`APP_ID` AS `app_id`,`zc`.`DM` AS `zcdm`,`zc`.`MC` AS `zc`,`lx`.`LX_ID` AS `zclxId`,`lx`.`MC` AS `zclx`,`zc`.`XH` AS `xh`,`zc`.`CCBH` AS `ccbh`,`zc`.`COST` AS `COST`,`zc`.`NUM` AS `num`,`zc`.`CFDD` AS `cfdd`,`zc`.`SYR` AS `syr`,`gl`.`DEPT_NO` AS `DEPT_NO`,`gl`.`DEPT_NAME` AS `dept_name`,`gl`.`FZR` AS `fzr`,`gl`.`GLR` AS `glr`,ifnull(`zc`.`PIC_URL`,`lx`.`PIC_URL`) AS `PIC_URL`,(case when isnull(`zc`.`PIC_URL`) then `lx`.`IMG_VERSION` else `zc`.`IMG_VERSION` end) AS `IMG_VERSION`,`zc`.`GZSJ` AS `gzsj`,`zc`.`ZJNX` AS `zjnx`,`zc`.`ZT` AS `zczt` from ((`j_zc` `zc` join `c_zclx` `lx` on((`zc`.`LX_ID` = `lx`.`ID`))) left join `c_zcgl` `gl` on((`zc`.`ZCGL_ID` = `gl`.`ID`))) ;
 
 -- ----------------------------
 -- View structure for v_zclx
 -- ----------------------------
 DROP VIEW IF EXISTS `v_zclx`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`127.0.0.1`  VIEW `v_zclx` AS select lx.id, lx.app_id, lx.mc lx, plx.mc plx, lx.zjnx, lx.remark 
-from c_zclx lx
-left outer join c_zclx plx on (lx.app_id = plx.app_id and lx.lx_pid = plx.lx_id)
-order by lx.id ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`127.0.0.1` SQL SECURITY DEFINER VIEW `v_zclx` AS select `lx`.`ID` AS `id`,`lx`.`APP_ID` AS `app_id`,`lx`.`MC` AS `lx`,`plx`.`MC` AS `plx`,`lx`.`ZJNX` AS `zjnx`,`lx`.`REMARK` AS `remark` from (`c_zclx` `lx` left join `c_zclx` `plx` on(((`lx`.`APP_ID` = `plx`.`APP_ID`) and (`lx`.`LX_PID` = `plx`.`LX_ID`)))) order by `lx`.`ID` ;
 
 -- ----------------------------
 -- View structure for v_zt
 -- ----------------------------
 DROP VIEW IF EXISTS `v_zt`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`127.0.0.1` SQL SECURITY DEFINER  VIEW `v_zt` AS select zt.id ztid, zt.app_id, zt.zcdm, zt.jlsj, zt.jlr, zt.poi, zt.old_zt, zt.new_zt, zt.remark, xz.MEDIA_TYPE, 
-			 min(case when xz.MEDIA_TYPE is null then '/default_img'
-               when xz.MEDIA_TYPE = 'image' then CONCAT('/', zt.APP_ID, '/', date_format(zt.jlsj, '%Y-%m-%d'), '/image/', xz.wx_media_id) 
-               else '/default_voice'
-           end) image_url
-from l_zt zt
-left outer join l_ztxz xz on (zt.id = xz.jl_id)
-group by ztid, app_id, zcdm, jlsj, jlr, poi, old_zt, new_zt, remark, xz.MEDIA_TYPE
-order by jlsj desc ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`127.0.0.1` SQL SECURITY DEFINER VIEW `v_zt` AS select `zt`.`ID` AS `ztid`,`zt`.`APP_ID` AS `app_id`,`zt`.`ZCDM` AS `zcdm`,`zt`.`JLSJ` AS `jlsj`,`zt`.`JLR` AS `jlr`,`zt`.`POI` AS `poi`,`zt`.`OLD_ZT` AS `old_zt`,`zt`.`NEW_ZT` AS `new_zt`,`zt`.`REMARK` AS `remark`,`xz`.`MEDIA_TYPE` AS `MEDIA_TYPE`,min((case when isnull(`xz`.`MEDIA_TYPE`) then '/default_img' when (`xz`.`MEDIA_TYPE` = 'image') then concat('/',`zt`.`APP_ID`,'/',date_format(`zt`.`JLSJ`,'%Y-%m-%d'),'/image/',`xz`.`WX_MEDIA_ID`) else '/default_voice' end)) AS `image_url` from (`l_zt` `zt` left join `l_ztxz` `xz` on((`zt`.`ID` = `xz`.`JL_ID`))) group by `ztid`,`zt`.`APP_ID`,`zt`.`ZCDM`,`zt`.`JLSJ`,`zt`.`JLR`,`zt`.`POI`,`zt`.`OLD_ZT`,`zt`.`NEW_ZT`,`zt`.`REMARK`,`xz`.`MEDIA_TYPE` order by `zt`.`JLSJ` desc ;
 
 -- ----------------------------
 -- Function structure for getWXDeptList

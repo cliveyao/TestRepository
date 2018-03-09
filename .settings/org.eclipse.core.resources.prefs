@@ -2,6 +2,7 @@ eclipse.preferences.version=1
 encoding//src/main/java=utf8
 encoding//src/main/resources=UTF-8
 encoding//src/main/resources/spring-mvc.xml=UTF-8
+encoding//src/main/webapp/WEB-INF/jsp/console/xxgl/ygxxUI.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/jsp/console/yhpgl/yhpsl/detailsBMYHPSQUI.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/jsp/console/yhpgl/yhpsl/insertBMYHPSQUI.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/jsp/console/yhpgl/yhpsl/leadingBMYHPListUI.jsp=UTF-8
